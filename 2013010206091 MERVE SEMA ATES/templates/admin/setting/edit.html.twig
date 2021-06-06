@@ -1,0 +1,28 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit Setting{% endblock %}
+
+{% block body %}
+    <h1>Edit Setting</h1>
+
+    {{ include('admin/setting/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+
+
+
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#detail' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
+
+    <a href="{{ path('admin_setting_index') }}">back to list</a>
+
+    {{ include('admin/setting/_delete_form.html.twig') }}
+{% endblock %}
+
+

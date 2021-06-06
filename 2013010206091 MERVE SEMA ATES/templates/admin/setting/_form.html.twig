@@ -1,0 +1,178 @@
+{{ include('admin/messages.html.twig')}}
+
+<form method="post">
+    <div class="form-group">
+        <div class="form-line">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    </div>
+            <div class="body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Genel Bilgiler</a></li>
+                    <li role="presentation" class=""><a href="#profile" data-toggle="tab" aria-expanded="false">Email Server</a></li>
+                    <li role="presentation" class=""><a href="#messages" data-toggle="tab" aria-expanded="false">Hakkımızda Sayfası</a></li>
+                    <li role="presentation" class=""><a href="#y" data-toggle="tab" aria-expanded="false">İletişim Sayfası</a></li>
+                    <li role="presentation" class=""><a href="#x" data-toggle="tab" aria-expanded="false">Referanslar Sayfası</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="home">
+
+                        <div class="form-group">
+                            <div class="form-line">
+
+                            </div>
+                        </div>
+                        <label>Adı</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="setting[title]"value="{{ setting.title }}"  class="form-control" placeholder="title">
+                            </div>
+                        </div>
+                        <label>Anahtar Kelimeler</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="setting[keywords]" value="{{ setting.keywords }}" class="form-control" placeholder="keywords">
+                            </div>
+                        </div>
+                        <label>Kısa Açıklama</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="setting[description]" value="{{ setting.description }}" class="form-control" placeholder="description">
+                            </div>
+                        </div>
+                        <label>Firma Adı</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="setting[company]" value="{{ setting.company }}" class="form-control" placeholder="description">
+                            </div>
+                        </div>
+                        <label>Adresi</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="setting[address]" value="{{ setting.address }}" class="form-control" placeholder="description">
+                            </div>
+                        </div>
+                        <label>Fax</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="setting[fax]" value="{{ setting.fax}}" class="form-control" placeholder="description">
+                            </div>
+                        </div>
+
+                        <label>Durum</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <select name="setting[status]" class="form-control">
+                                    <option>{{ setting.status}}</option>
+                                    <option>True</option>
+                                    <option>False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="y">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <textarea id="contact" name="setting[contact]" >{{ setting.contact}}</textarea>
+                            </div>
+                        </div>
+                        <div class="row"></div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="messages">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <textarea id="aboutus" name="setting[aboutus]" >{{ setting.aboutus}}</textarea>
+                            </div>
+                        </div>
+                        <div class="row"></div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="profile">
+                        <label>Email Server</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="setting[smtpserver]"value="{{ setting.smtpserver }}"  class="form-control" placeholder="title">
+                            </div>
+                        </div>
+                        <label>Email</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="setting[smtpemail]" value="{{ setting.smtpemail }}" class="form-control" placeholder="keywords">
+                            </div>
+                        </div>
+                        <label>Email Şifre</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="setting[smtppassword]" value="{{ setting.smtppassword }}" class="form-control" placeholder="description">
+                            </div>
+                        </div>
+                        <label>SMTP Port</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" name="setting[smtpport]" value="{{ setting.smtpport }}" class="form-control" placeholder="description">
+                            </div>
+                        </div>
+                        <div class="row"></div>
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane fade" id="x">
+
+                        <div class="form-group">
+                            <div class="form-line">
+                                <textarea id="referances" name="setting[referances]" >{{ setting.referances}}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary m-t-20 waves-effect">KAYDET</button>
+
+</form>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#contact' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#aboutus' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#referances' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+
+
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#detail' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+

@@ -1,0 +1,53 @@
+
+
+<form class="form-vertical" method="post">
+    <label>Üst Kategori</label>
+    <div class="form-group">
+        <div class="form-line">
+            <select name="category[parentid]" class="form-control">
+
+                {% if category.parentid!=0 %}
+                <option value="{{category.parentid }}">{{ catname.title }}</option>
+                {% else %}
+                  <option value="0">Ana Kategori</option>
+                {% endif %}
+
+                <option value="0">Ana Kategori</option>
+                {% for cat in catlist %}
+                <option value="{{ cat.id }}">{{ cat.title }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+    </div>
+    <label>Title (Başlık)</label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="category[title]"value="{{ category.title }}"  class="form-control" placeholder="title">
+        </div>
+    </div>
+    <label>Keywords (Anahtar Kelimeler)</label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="category[keywords]" value="{{ category.keywords }}" class="form-control" placeholder="keywords">
+        </div>
+    </div>
+    <label>Description (Kısa Açıklama)</label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="category[description]" value="{{ category.description }}" class="form-control" placeholder="description">
+        </div>
+    </div>
+
+    <label >Aktif Durumu</label>
+    <div class="form-group">
+        <div class="form-line">
+            <select name="category[status]" class="form-control">
+                <option>{{ category.status}}</option>
+                <option>True</option>
+                <option selected>False</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary m-t-20 waves-effect">KAYDET</button>
+</form>

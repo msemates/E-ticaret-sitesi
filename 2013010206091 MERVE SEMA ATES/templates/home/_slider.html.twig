@@ -1,0 +1,50 @@
+<style>
+    .main-carousel {
+        width: 400px;
+        margin: 0 auto;
+    }
+    .carousel-cell {
+        height: 300px;
+        width: 400px;
+    }
+    .flickity-prev-next-button {
+       display: none;
+    }
+    .product__name {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        text-decoration: underline;
+        text-transform: uppercase;
+        font-size: 20px;
+    }
+</style>
+
+<section id="slider"><!--slider-->
+    <div class="container">
+        <div class="main-carousel">
+            {% for rs in sliders %}
+            <div class="carousel-cell">
+                <a href="{{ path('product_detail', {'id': rs.id} )}}" class="product__link">
+                    <img style="object-fit: cover" src="uploads/{{ asset('images') }}/{{rs.image}}" alt="">
+                </a>
+                <div class="product__name">
+                    {{ rs.title }}
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section><!--/slider-->
+<script src="js/jquery.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<script>
+    $('.main-carousel').flickity({
+// options
+        cellAlign: 'left',
+        contain: true,
+        autoPlay: true,
+    });
+</script>

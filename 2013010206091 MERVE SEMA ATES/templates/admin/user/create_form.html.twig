@@ -1,0 +1,72 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Shopping Admin Panel {% endblock %}
+{% block content %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h4> Üye Ekleme</h4>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="header">
+                <h4>
+                    Yeni Üye Ekleme
+
+                </h4>
+            </div>
+            <div class="body">
+                <form class="form-vertical" method="post">
+                    <label for="email_address">Adı Soyadı</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" name="user[name]" id="email_address" class="form-control" placeholder="Adı Soyadı">
+                        </div>
+                    </div>
+                    <label for="email_address">Email</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="email" name="user[email]" id="email_address" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <label for="password">Password</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="password" name="user[password]" id="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                    <hr>
+                    <label for="password">Türü</label>
+                    <div class="form-group">
+                        <div  >
+                            <select name="user[roles]" class="form-control">
+                                <option>ROLE_ADMIN</option>
+                                <option>ROLE_USER</option>
+                                <option>ROLE_POWER</option>
+                                <option>ROLE_MEMBER</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+                    <label for="password">Aktif Durumu</label>
+                    <div  >
+                        <div  >
+                            <select name="user[status]" class="form-control">
+                                <option>True</option>
+                                <option>False</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary m-t-15 waves-effect">KAYDET</button>
+                </form>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+

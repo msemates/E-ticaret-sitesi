@@ -1,0 +1,52 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Sipariş Listesi {% endblock %}
+{% block content %}
+    <h4>Siparisler</h4>
+    <div class="body table-responsive">
+        <table class="table">
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Userid</th>
+                <th>Amount</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Phone</th>
+
+                <th>Note</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.userid }}</td>
+                <td>{{ order.amount }}</td>
+                <td>{{ order.name }}</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.city }}</td>
+                <td>{{ order.phone }}</td>
+
+                <td>{{ order.note }}</td>
+                <td>{{ order.status }}</td>
+                <td>
+                    <a href="javascript:openWin('{{ path('admin_orders_show', {'id': order.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=700,height=600');">
+                        Göster</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+    </div>
+</div>
+
+{% endblock %}
+
+

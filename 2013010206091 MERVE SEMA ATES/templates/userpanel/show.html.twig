@@ -1,0 +1,52 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Profil Bilgileri {% endblock %}
+
+{% block sidebar %} {{ include('home/_usersidebar.html.twig') }} {% endblock %}
+
+{% block content %}
+
+    <h3>Üye Profil Bilgileri</h3>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ app.user.id}}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ app.user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ app.user.roles | join }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ app.user.name }}</td>
+            </tr>
+            <tr>
+                <th>Adres</th>
+                <td>{{ app.user.address }}</td>
+            </tr>
+            <tr>
+                <th>Şehir</th>
+                <td>{{ app.user.city }}</td>
+            </tr>
+            <tr>
+                <th>Telefon</th>
+                <td>{{ app.user.phone }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ app.user.status }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+{% endblock %}
+
+

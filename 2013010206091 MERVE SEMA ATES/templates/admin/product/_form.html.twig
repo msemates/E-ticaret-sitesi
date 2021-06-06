@@ -1,0 +1,75 @@
+
+{{ include('admin/messages.html.twig')}}
+
+    <form method="post">
+        <label>Üst Kategori</label>
+        <div class="form-group">
+            <div class="form-line">
+                <select name="product[category_id]" class="form-control">
+                    {% if (catname) %}
+                        <option value="{{product.categoryid }}">{{ catname [0].title }}</option>
+                    {% endif %}
+                    {% for cat in catlist %}
+                        <option value="{{ cat.id }}">{{ cat.title }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+        </div>
+        <label>Title (Başlık)</label>
+        <div class="form-group">
+            <div class="form-line">
+                <input type="text" name="product[title]"value="{{ product.title }}"  class="form-control" placeholder="title">
+            </div>
+        </div>
+        <label>Keywords (Anahtar Kelimeler)</label>
+        <div class="form-group">
+            <div class="form-line">
+                <input type="text" name="product[keywords]" value="{{ product.keywords }}" class="form-control" placeholder="keywords">
+            </div>
+        </div>
+        <label>Description (Kısa Açıklama)</label>
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="product[description]" value="{{ product.description }}" class="form-control" placeholder="description">
+                </div>
+            </div>
+        <label>Alış Fiyatı</label>
+        <div class="form-group">
+            <div class="form-line">
+                <input type="text" name="product[pprice]" value="{{ product.pprice }}" class="form-control" placeholder="description">
+            </div>
+        </div>
+        <label>Satış Fiyatı</label>
+           <div class="form-group">
+               <div class="form-line">
+                   <input type="text" name="product[sprice]" value="{{ product.sprice }}" class="form-control" placeholder="description">
+               </div>
+           </div>
+        <label>Miktar</label>
+           <div class="form-group">
+               <div class="form-line">
+                   <input type="text" name="product[amount]" value="{{ product.amount}}" class="form-control" placeholder="description">
+               </div>
+           </div>
+        <label >Aktif Durumu</label>
+        <div class="form-group">
+            <div class="form-line">
+                <select name="product[status]" class="form-control">
+                    <option>{{ product.status}}</option>
+                     <option>True</option>
+                     <option selected>False</option>
+                </select>
+            </div>
+        </div>
+        <label>Detay</label>
+           <textarea id="detail" name="product[detail]" >{{ product.detail}}</textarea>
+
+        <button type="submit" class="btn btn-primary m-t-20 waves-effect">KAYDET</button>
+
+    </form>
+
+
+
+
+

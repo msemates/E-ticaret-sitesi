@@ -1,0 +1,83 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} {{ data[0].title }}{% endblock %}
+{% block keywords %} {{ data[0].keywords }}{% endblock %}
+{% block description %} {{ data[0].description }}{% endblock %}
+
+
+{% block content %}
+    <style>
+        .main-carousel {
+            width: 400px;
+        }
+        .carousel-cell {
+            height: 300px;
+            width: 400px;
+        }
+        .flickity-prev-next-button {
+            display: none;
+        }
+
+        .but_btn {
+            background: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: none;
+            background-color: #0f9d58;
+            color: #fff;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<div class="container">
+
+    <div class="col-sm-5">
+        <div class="main-carousel">
+            {% for rs in images %}
+                <div class="carousel-cell">
+                    <img src="{{asset('uploads/images') }}/{{rs.image}}" alt="">
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <div class="product-information">
+            <h3>{{ data[0].title }}</h3>
+            <hr class="soft">
+
+            <form name="shopcart" class="form-horizontal qtyFrm" action="{{ path('shopcart_new') }}" method="post">
+                <div class="control-group">
+                    <label class="control-label"><span>Fiyatı: {{ data[0].sprice }} TL</span></label>
+                    <br>
+                    <label class="control-label"><span>Alacağınız Adet: </span></label>
+
+                    <input type="number" name="shopcart[quantity]" class="span6" value="1" placeholder=Adet" max="{{ data[0].amount }}">
+                    <input type="hidden" name="shopcart[productid]" value="{{ data[0].id }}">
+                </div>
+
+                <h4>{{ data[0].amount }} Adet stokta var</h4>
+                <p>{{ data[0].description }}</p>
+
+                <input type="hidden" name="token" value="{{ csrf_token('add-item') }}">
+
+                <button type="submit" class="but_btn"><i style="margin-right: 10px" class="fa fa-shopping-bag"></i>Add to cart</button>
+            </form>
+        </div>
+    </div>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script>
+        $('.main-carousel').flickity({
+            // options
+            cellAlign: 'left',
+            contain: true,
+            autoPlay: true
+        });
+    </script>
+
+
+{% endblock %}

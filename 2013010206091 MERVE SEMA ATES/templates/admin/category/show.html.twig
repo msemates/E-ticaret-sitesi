@@ -1,0 +1,54 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Kategori Detayı {% endblock %}
+{% block content %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h4>Kategori Detayı</h4>
+                <br><small><a href="{{ path('admin_category_new') }}" class=" btn btn-primary waves-effect"><i class="material-icons">add_box</i> Yeni Kategori Ekleme</a></small></br>
+                <br>
+                <div class="body table-responsive">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ category.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Parentid</th>
+                            <td>{{ category.parentid }}</td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ category.title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Keywords</th>
+                            <td>{{ category.keywords }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ category.description }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ category.status }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('admin_category_index') }}">back to list</a>
+
+                    <a href="{{ path('admin_category_edit', {'id': category.id,'pid':category.parentid}) }}">edit</a>
+
+                    {{ include('admin/category/_delete_form.html.twig') }}
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+

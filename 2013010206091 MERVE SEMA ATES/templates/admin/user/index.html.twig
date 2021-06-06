@@ -1,0 +1,40 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Üye Listesi {% endblock %}
+{% block content %}
+                <h4>Üye Listesi</h4>
+                <br><small><a href="{{ path('admin_user_new') }}" class=" btn btn-primary waves-effect"><i class="material-icons">add_box</i>Üye Ekleme</a></small></br>
+                <div class="body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Adı Soyadı</th>
+                            <th>Email</th>
+                            <th>Durum</th>
+                            <th>Roller</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for row in users %}
+                            <br>
+
+                        <tr>
+                            <td>{{ row.id }}</td>
+                            <td>{{ row.name }}</td>
+                            <td>{{ row.email}}</td>
+                            <td>{{ row.status }}</td>
+                            <td>{% for item in row.roles %}
+                                   {{ item }}
+                            {% endfor %}</td>
+                            <td><a href="{{ path('admin_user_edit',{'id':row.id}) }}" class="btn btn-info waves-effect">Düzenle</a></td>
+                            <td><a href="{{ path('admin_user_delete',{'id':row.id}) }}"onclick="return confirm('Silmek İstediğinizden Emin Misiniz?');" class="btn btn-danger waves-effect">Sil</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+{% endblock %}
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>{% block title %} Order Detail {% endblock %}</title>
+    <!-- Favicon-->
+    <link rel="icon" href="{{ asset('admin') }}/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="{{ asset('admin') }}/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="{{ asset('admin') }}/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="{{ asset('admin') }}/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="{{ asset('admin') }}/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="{{ asset('admin') }}/css/themes/all-themes.css" rel="stylesheet" />
+    <link href="{{ asset('admin') }}/plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="{{ asset('admin') }}/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+    <!-- Bootstrap Select Css -->
+    <link href="{{ asset('admin') }}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin(windowURL,windowName,windowFeatures){
+            window.open(windowURL,windowName,windowFeatures);
+        }
+    </SCRIPT>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+
+</head>
+
+
+    <h2>Sipariş Detayı</h2>
+{{ include ('messages.html.twig') }}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ order.id }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ order.userid }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ order.amount }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ order.name }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ order.address }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ order.city }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ order.phone }}</td>
+            </tr>
+            <tr>
+                <th>Shipinfo</th>
+                <td>{{ order.shipinfo }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ order.status }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ order.note }}</td>
+            </tr>
+
+        <form action="{{ path('admin_orders_update', {'id': order.id}) }}" method="post">
+
+            <tr>
+                <th>Shipinfo</th>
+                <td> <textarea name="shipinfo" cols="100" rows="3"> {{ order.shipinfo }}</textarea></td>
+            </tr>
+            <tr>
+                <th>Admin Note</th>
+                <td> <textarea name="note" cols="100" rows="3"> {{ order.note }}</textarea></td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td> <select name="status">
+                        <option>{{ order.status }}</option>
+                        <option>Accepted</option>
+                        <option>InShipping</option>
+                        <option>Cancelled</option>
+                        <option>Completed</option>
+                    </select>
+
+            <input type="submit" value="güncelle">
+                </td>
+        </form>
+        </tbody>
+    </table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Product Name</th>
+        <th>Sale Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% set total=0 %}
+    {% for rs in orderdetail %}
+      <tr>
+          <td>{{ rs.id }}</td>
+          <td>{{ rs.name }}</td>
+          <td>{{ rs.price }}</td>
+          <td>{{ rs.quantity }}</td>
+          <td>{{ rs.amount }}</td>
+          <td>{{ rs.status }}</td>
+
+      </tr>
+
+    {% else %}
+    <tr>
+        <td colspan="5">Order Detail</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="5" <b>Toplam Alışveriş Tutarı : {{ order.amount }} TL </b> <br>
+    </tr>
+    </tbody>
+</table>
+
+
+

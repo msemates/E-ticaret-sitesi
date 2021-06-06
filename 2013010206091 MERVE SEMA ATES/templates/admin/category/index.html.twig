@@ -1,0 +1,50 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Kategori Listesi {% endblock %}
+{% block content %}
+    <h2>Kategori Listesi</h2>
+    <br><small><a href="{{ path('admin_category_new') }}" class=" btn btn-primary waves-effect"><i class="material-icons">add_box</i> Yeni Kategori Ekleme</a></small></br>
+    <br>
+    <div class="body table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Parentid</th>
+                <th>Title</th>
+                <th>Keywords</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Göster</th>
+                <th>Düzenle</th>
+                <th>Sil</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.parentid }}</td>
+                    <td>{{ category.title }}</td>
+                    <td>{{ category.keywords }}</td>
+                    <td>{{ category.description }}</td>
+                    <td>{{ category.status }}</td>
+                    <td>
+                        <a href="{{ path('admin_category_show', {'id': category.id,'pid':category.parentid}) }}"class="btn btn-info waves-effect">Göster</a>
+                    </td><td>
+                        <a href="{{ path('admin_category_edit', {'id': category.id}) }}"class="btn btn-primary waves-effect">Düzenle</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('admin_category_delete', {'id': category.id}) }}"onclick="return confirm ('Emin Misiniz?');"><i class="btn btn-danger waves-effect">Sil</i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}
+
+

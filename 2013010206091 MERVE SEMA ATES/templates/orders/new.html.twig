@@ -1,0 +1,22 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Shopcart Order Items {% endblock %}
+
+
+{% block body %}
+
+
+    <div class="container">
+        <div class="col-sm-3">
+            {{ include('home/_usersidebar.html.twig') }}
+        </div>
+<div class="col-sm-9">
+    {{ include('orders/_form.html.twig') }}
+
+</div>
+    </div>
+
+    <a href="{{ path('orders_index') }}">back to list</a>
+
+{% endblock %}
+

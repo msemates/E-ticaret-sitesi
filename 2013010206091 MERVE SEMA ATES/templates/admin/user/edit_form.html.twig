@@ -1,0 +1,65 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} Uye Duzenleme {% endblock %}
+{% block content %}
+                <h4> Üye Düzenleme</h4>
+    <section class="content">
+        <div class="card">
+            <div class="header">
+                <h4>
+                    Üye Düzenleme Formu
+                </h4>
+            </div>
+            <div class="body">
+                <form class="form-vertical" method="POST">
+                    <label for="email_address">Adı Soyadı</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" name="user[name]" value="{{ user.name }}" id="email_address" class="form-control" placeholder="Adı Soyadı">
+                        </div>
+                    </div>
+                    <label for="email_address">Email</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="email" name="user[email]"value="{{ user.email }}" id="email_address" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <label for="password">Password</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="password" name="user[password]" value="{{ user.password }}" id="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                    <label for="password">Türü</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <select name="user[roles]" class="form-control">
+                                {% for item in user.roles %}
+                                   <option  selected>{{ item }}</option>
+                                {% endfor %}
+                                <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+                                <option value="ROLE_USER">ROLE_USER</option>
+                                <option value="ROLE_POWER">ROLE_POWER</option>
+                                <option value="ROLE_MEMBER">ROLE_MEMBER</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label for="password">Aktif Durumu</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <select name="user[status]" class="form-control">
+                                <option>{{ user.status}}</option>
+                                <option>True</option>
+                                <option>False</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary m-t-15 waves-effect">KAYDET</button>
+                </form>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+
+

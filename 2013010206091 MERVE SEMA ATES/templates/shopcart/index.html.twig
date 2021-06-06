@@ -1,0 +1,48 @@
+{% extends 'frontbase.html.twig' %}
+
+
+{% block sidebar %} {{ include('home/_usersidebar.html.twig')}}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col-sm-9 padding-right">
+    <h5>Sepet</h5>
+     {{ include('messages.html.twig')}}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product Name</th>
+                <th>Sale Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for shopcart in shopcarts %}
+            <tr>
+                <td>{{ shopcart.id }}</td>
+                <td>{{ shopcart.title }}</td>
+                <td>{{ shopcart.sprice }}</td>
+                <td>{{ shopcart.quantity }}</td>
+                <td>{{ shopcart.quantity * shopcart.sprice  }}</td>
+                <td>
+                <td><a href="{{ path('shopcart_del',{'id':shopcart.id}) }}"onclick="return confirm('Silmek İstediğinizden Emin Misiniz?');" class="btn btn-danger waves-effect">Del</a></td>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <a href="{{ path('orders_new') }}" class="btn btn-success">Sepeti Onayla</a>
+
+
+    </div>
+</div>
+
+{% endblock %}

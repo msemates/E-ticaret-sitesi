@@ -1,0 +1,77 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Login - {{ data[0].title }}{% endblock %}
+{% block keywords %} {{ data[0].keywords }}{% endblock %}
+{% block description %} {{ data[0].description }}{% endblock %}
+{% block sidebar %}
+
+ {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+     {{ include ('home/_usersidebar.html.twig')}}
+ {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container text-center">
+
+    <div class="row">
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+
+            User Name: {{ app.user.name }} <hr>
+            User Email: {{ app.user.email }} <hr>
+            User Roles:{% for item in app.user.roles %}
+            {{ item }}<br>
+        {% endfor %}
+            <hr>
+    {% else %}
+
+
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Kullanıcı Girişi</h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Giriş Yap
+    </button>
+</form>
+
+        <a href="{{ path('register') }}" class="btn btn-lg btn-primary"> Üye Ol </a>
+
+        {% endif %}
+
+        </p>
+
+        <div class="row"></div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+

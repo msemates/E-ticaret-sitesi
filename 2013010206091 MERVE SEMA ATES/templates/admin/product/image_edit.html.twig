@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Product İmage{% endblock %}
+
+{% block body %}
+    <h1>{{ product.title }}</h1>
+
+    <form action="{{ path('admin_product_iupdate',{'id': id}) }}" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input name="productid" value="{{ id }}" type="number" readonly>
+        <input type="file" name="imagename" id="fileToUpload">
+        <input type="submit" value="Upload Image" name="submit">
+    </form>
+
+    {% if product.image !=null  %}
+        <img src="{{ asset('uploads') }}/images/{{ product.image}}">
+    {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,23 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} Shopping Admin Panel {% endblock %}
+{% block content %}
+
+   {{ include('admin/messages.html.twig')}}
+
+    {{ include('admin/product/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#detail' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
+    <a href="{{ path('admin_product_index') }}">back to list</a>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,76 @@
+
+{{ include('admin/messages.html.twig')}}
+
+<form class="form-horizontal" name="order" action="{{path ('orders_new') }}" method="post">
+    <label>Ödenecek Tutar :</label>
+    <div class="form-group">
+        <input type="text" name="orders[amount]"value="{{ total }}"  class="form-control" placeholder="name">
+    </div>
+    <hr>
+    KARGO ALICI BİLGİLERİ
+    <label>Adı Soyadı  :</label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="orders[name]"value="{{ app.user.name }}"  class="form-control" placeholder="name">
+        </div>
+    </div>
+    <label>Adresi: </label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="orders[address]" value="{{app.user.address }}" class="form-control" placeholder="Adresi">
+        </div>
+    </div>
+    <label>Şehir:  </label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="orders[city]" value="{{ app.user.city }}" class="form-control" placeholder="subject">
+        </div>
+    </div>
+    <label> Telefon:   </label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="orders[phone]" value="{{ app.user.phone }}" class="form-control" placeholder="subject">
+        </div>
+    </div>
+    <hr>
+    KREDİ KARTI BİLGİLERİ
+    <hr>
+    <label >Adı Soyadı:  </label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="cartholdername" class="form-control" placeholder="Kart adı soyadı">
+        </div>
+    </div>
+    <label >Kart Numarası:  </label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="cartnumber" class="form-control" placeholder="Kart numarası">
+        </div>
+    </div>
+    <label >Son Kullanma Tarihi:  </label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="cartvaliddates" class="form-control" placeholder="AY/YIL">
+        </div>
+    </div>
+    <label >Güvenlik Kodu:  </label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="number" name="cartsecuritycode" class="form-control" placeholder="Güvenlik kodu">
+        </div>
+    </div>
+    <label >Adı Soyadı:  </label>
+    <div class="form-group">
+        <div class="form-line">
+            <input type="text" name="cartholdername" class="form-control" placeholder="Kart adı soyadı">
+        </div>
+    </div>
+
+    <input type="hidden" name="token" value="{{csrf_token('form-order') }}"/>
+
+    <button type="submit" class="btn btn-primary m-t-20 waves-effect">SATIN AL</button>
+
+</form>
+
+
+

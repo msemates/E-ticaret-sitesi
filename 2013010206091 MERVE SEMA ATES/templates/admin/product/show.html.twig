@@ -1,0 +1,90 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+
+    <h1>Product</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ product.title }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ product.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ product.type }}</td>
+            </tr>
+            <tr>
+                <th>Publisher_id</th>
+                <td>{{ product.publisherId }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ product.year }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ product.amount }}</td>
+            </tr>
+            <tr>
+                <th>Pprice</th>
+                <td>{{ product.pprice }}</td>
+            </tr>
+            <tr>
+                <th>Sprice</th>
+                <td>{{ product.sprice }}</td>
+            </tr>
+            <tr>
+                <th>Min</th>
+                <td>{{ product.min }}</td>
+            </tr>
+            <tr>
+                <th>Detail</th>
+                <td>{{ product.detail }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ product.image }}</td>
+            </tr>
+            <tr>
+                <th>Writer_id</th>
+                <td>{{ product.writerId }}</td>
+            </tr>
+            <tr>
+                <th>Category_id</th>
+                <td>{{ product.categoryId }}</td>
+            </tr>
+            <tr>
+                <th>User_id</th>
+                <td>{{ product.userId }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ product.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_product_index') }}">back to list</a>
+
+    <a href="{{ path('admin_product_edit', {'id': product.id}) }}">edit</a>
+
+    {{ include('admin/product/_delete_form.html.twig') }}
+
+{% endblock %}
+
+

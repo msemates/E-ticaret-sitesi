@@ -1,0 +1,22 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Kategori Düzenleme {% endblock %}
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h4>Kategori Düzenleme</h4>
+
+            <br>
+            <div class="body table-responsive">
+
+    {{ include('admin/product/_form.html.twig') }}
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,54 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block sidebar %} {{ include('home/_usersidebar.html.twig')}}{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="col-sm-9 padding-right">
+
+            {{ include('messages.html.twig')}}
+
+        <table class="table">
+        <thead>
+            <tr>
+
+                <th>Amount</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Phone</th>
+
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+
+                <td>{{ order.amount }}</td>
+                <td>{{ order.name }}</td>
+                <td>{{ order.city }}</td>
+                <td>{{ order.phone }}</td>
+
+                <td>{{ order.status }}</td>
+                <td>
+                    <a href="{{ path('orders_show', {'id': order.id}) }}">show</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+        </div>
+    </div>
+
+{% endblock %}
+

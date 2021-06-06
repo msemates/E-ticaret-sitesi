@@ -1,0 +1,27 @@
+
+<div class="col-sm-9" style="margin-left: 400px">
+
+    {% for rs in products %}
+
+        <div class="col-sm-4">
+            <div class="product-image-wrapper">
+
+                <div class="single-products">
+                    <div class="productinfo text-center" >
+                        <a href="{{ path('product_detail', {'id': rs.id} )}}" class="product__link">
+                            <img style="height: 300px; object-fit: cover" src="{{ asset('uploads') }}/images/{{ rs.image }}" alt="">
+                        </a>
+                        <h2>{{ rs.sprice }} TL</h2>
+                        <p>{{ rs.title }}</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+</div>
+</div>
+</section>
